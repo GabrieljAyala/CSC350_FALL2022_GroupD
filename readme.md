@@ -1,1 +1,0 @@
-This will be Group D's simple readme.md
