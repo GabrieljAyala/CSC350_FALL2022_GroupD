@@ -42,14 +42,31 @@
             setTimeout(() => {
               div.style.opacity = '0';
               div.style.transition = 'visibility 0s 1s, opacity 1s linear';
-            }, 3000); 
+            }, 100000); 
         }
 
+
+
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function(){
+					if(this.readyState == 4  && this.status == 200){
+					console.log('Returned True')
+					document.getElementById('bingchilling').innerHTML = this.responseText;}
+					};
+
+					xhttp.open("GET", "Units.php", true);
+					xhttp.send();
+					
+					
+					
+
+			
     </script>
 
 <body>
 
 <h1>THE HEIGHTS Sign up</h1>
+
 <div class="signup-box">
         <form>
         <div class="form-elements">
@@ -79,31 +96,9 @@
                     <label class="confirm">Confirm Password<div id="message"></div></label>
                 </div>
 
-                <div class="Units"><span class="apt-unit">Apartment Unit:</span>
-                <select name="unit" id="units" class="select-button">
-                  <option disabled selected value><span style="color:white">select unit</span></option>
-                  <option value="UnitA1">UnitA1</option>
-                  <option value="UnitA2">UnitA2</option>
-                  <option value="UnitA3">UnitA3</option>
-                  <option value="UnitA4">UnitA4</option>
-                  <option value="UnitA5">UnitA5</option>
-                  <option value="UnitA6">UnitA6</option>
-                  <option value="UnitA7">UnitA7</option>
-                  <option value="UnitA8">UnitA8</option>
-                  <option value="UnitA9">UnitA9</option>
-                  <option value="UnitA10">UnitA10</option>
-                  <option value="UnitA11">UnitA11</option>
-                  <option value="UnitA12">UnitA12</option>
-                  <option value="UnitA13">UnitA13</option>
-                  <option value="UnitA14">UnitA14</option>
-                  <option value="UnitA15">UnitA15</option>
-                  <option value="UnitA16">UnitA16</option>
-                  <option value="UnitA17">UnitA17</option>
-                  <option value="UnitA18">UnitA18</option>
-                  <option value="UnitA19">UnitA19</option>
-                  <option value="UnitA20">UnitA20</option>
-                </select></div>
-                <input type="submit" value="Sign up" onmouseover="showAgreement();">
+              
+					<div id='bingchilling'></div>
+
                 <p class="para-2">Already have an account? <a href="Login.html">Login Here</a></p>
         </div>
         </form>
