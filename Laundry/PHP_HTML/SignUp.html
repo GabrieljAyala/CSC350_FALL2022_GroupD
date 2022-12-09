@@ -1,52 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Sign Up</title>
+<title> The Heights Sign Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="check.css">
 </head>
+
+<script>
+        var checkPassword = function() {
+            if (document.getElementById('password').value &&
+                document.getElementById('confirm_password').value != '') {
+                if (document.getElementById('password').value ==
+                document.getElementById('confirm_password').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = '<span>&#10003;</span>';
+                } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = '<span>&#9888;</span>';
+              }
+            } else {
+                document.getElementById('message').innerHTML = '';
+            }
+        }
+
+        function myFunction() {
+          var x = document.getElementById("agreement");
+          x.style.display = "none";
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+
+        function showAgreement() {
+            const div = document.getElementById('agreement');
+            div.style.visibility = 'visible';
+            div.style.opacity = '1';
+            setTimeout(() => {
+              div.style.opacity = '0';
+              div.style.transition = 'visibility 0s 1s, opacity 1s linear';
+            }, 3000); 
+        }
+
+    </script>
+
 <body>
+
+<h1>THE HEIGHTS Sign up</h1>
 <div class="signup-box">
-<h1>Sign Up</h1>
-<form>
-<label for="Units">Choose Your Unit:</label>
-<select name="units" id="units">
- <option value=""></option>
-  <option value="UnitA1">UnitA1</option>
-  <option value="UnitA2">UnitA2</option>
-  <option value="UnitA3">UnitA3</option>
-  <option value="UnitA4">UnitA4</option>
-  <option value="UnitA5">UnitA5</option>
-  <option value="UnitA6">UnitA6</option>
-  <option value="UnitA7">UnitA7</option>
-  <option value="UnitA8">UnitA8</option>
-  <option value="UnitA9">UnitA9</option>
-  <option value="UnitA10">UnitA10</option>
-  <option value="UnitA11">UnitA11</option>
-  <option value="UnitA12">UnitA12</option>
-  <option value="UnitA13">UnitA13</option>
-  <option value="UnitA14">UnitA14</option>
-  <option value="UnitA15">UnitA15</option>
-  <option value="UnitA16">UnitA16</option>
-  <option value="UnitA17">UnitA17</option>
-  <option value="UnitA18">UnitA18</option>
-  <option value="UnitA19">UnitA19</option>
-  <option value="UnitA20">UnitA20</option>
-</select>
-<label>First Name</label>
-<input type="text" placeholder="">
-<label>Last Name</label>
-<input type="text" placeholder="">
-<label>Email</label>
-<input type="email" placeholder="">
-<label>Password</label>
-<input type="password" placeholder="">
-<label>Confirm Password</label>
-<input type="password" placeholder="">
-<input type="button" value="Submit">
-</form>
-<p>By clicking the Sign Up button, you are agreeing to our <br>
-<a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
-</p>
-<p class="para-2">Already have an account? <a href="">Login Here</a></p>
+        <form>
+        <div class="form-elements">
+                <div class="txt_field">
+                    <input type="text" name="fname" required>
+                    <span></span>
+                    <label>First Name</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="lname" required>
+                    <span></span>
+                    <label>Last Name</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="email" required>
+                    <span></span>
+                    <label>Email</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" id="password" type="password" onkeyup='checkPassword();' required>
+                    <span></span>
+                    <label>Password</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="password" id="confirm_password"  onkeyup='checkPassword();' required>
+                    <span></span>
+                    <label class="confirm">Confirm Password<div id="message"></div></label>
+                </div>
+
+                <div class="Units"><span class="apt-unit">Apartment Unit:</span>
+                <select name="unit" id="units" class="select-button">
+                  <option disabled selected value><span style="color:white">select unit</span></option>
+                  <option value="UnitA1">UnitA1</option>
+                  <option value="UnitA2">UnitA2</option>
+                  <option value="UnitA3">UnitA3</option>
+                  <option value="UnitA4">UnitA4</option>
+                  <option value="UnitA5">UnitA5</option>
+                  <option value="UnitA6">UnitA6</option>
+                  <option value="UnitA7">UnitA7</option>
+                  <option value="UnitA8">UnitA8</option>
+                  <option value="UnitA9">UnitA9</option>
+                  <option value="UnitA10">UnitA10</option>
+                  <option value="UnitA11">UnitA11</option>
+                  <option value="UnitA12">UnitA12</option>
+                  <option value="UnitA13">UnitA13</option>
+                  <option value="UnitA14">UnitA14</option>
+                  <option value="UnitA15">UnitA15</option>
+                  <option value="UnitA16">UnitA16</option>
+                  <option value="UnitA17">UnitA17</option>
+                  <option value="UnitA18">UnitA18</option>
+                  <option value="UnitA19">UnitA19</option>
+                  <option value="UnitA20">UnitA20</option>
+                </select></div>
+                <input type="submit" value="Sign up" onmouseover="showAgreement();">
+                <p class="para-2">Already have an account? <a href="Login.html">Login Here</a></p>
+        </div>
+        </form>
 </div>
+        <div id="agreement" class="popup">
+            <div class="inner">
+                <p class="agreement">By clicking Sign up, you are agreeing to our <br>
+                <a href="TermsAndConditions.html" target="_blank">Terms and Conditions</a> and <a href="PrivacyPolicy.html" target="_blank">Privacy Policy</a>.
+                </p>
+            </div>
+        </div>
+        
 </body>
