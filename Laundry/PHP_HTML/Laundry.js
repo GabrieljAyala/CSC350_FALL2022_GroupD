@@ -51,7 +51,7 @@ function getDateTime() {
 		const d = new Date();
 		let day = days[d.getUTCDay()];
 		var time = d.getUTCHours() + ":" + d.getUTCMinutes() + ":" + d.getUTCSeconds();
-		var date = day + ' ' + time;  
+		var date = '<h3>Time:</h3>'+ day + ' ' + time;  
 		return date
 
 			}
@@ -64,8 +64,10 @@ function getDateTime() {
 				
 				For example Monday 00:00:00 isn't correct, Monday 0:0:0 is correct
 				01:30:01 is incorrect but 1:30:1 is correct 
+				
+				Need to make it so that on the backend it also refreshes
 				*/
-				if(currentTime === 'Thursday 6:18:40')
+				if(currentTime === 'Monday 0:0:0')
 				{
 					var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function(){
@@ -83,15 +85,9 @@ function getDateTime() {
 				document.getElementById("clock").innerHTML = currentTime;
 			}, 1000);
 			
-			
+			/*
 			setInterval(function(){
-				/*
-				If you want to test the reset, change the currentTime's string condition
-				Make sure the time is in UTC and if any of the time is one character, you format it one character
-				
-				For example Monday 00:00:00 isn't correct, Monday 0:0:0 is correct
-				01:30:01 is incorrect but 1:30:1 is correct 
-				*/
+
 
 					var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function(){
@@ -108,9 +104,22 @@ function getDateTime() {
 
 				
 			}, 1000);
+			*/
 
 function LaundryResponse(clicked_id){
-				var xhttp = new XMLHttpRequest();
+				let confirmation = document.getElementById('confirm');
+				let value = JSON.stringify(clicked_id);
+				document.getElementById('confirm').innerHTML = `<br><h3>Confirm Reservation:</h3> ${clicked_id}<br>`;
+					 
+confirmation.innerHTML = confirmation.innerHTML + `<button onClick="confirmationResponse('${clicked_id}')">Reserve</button> <button onClick='cancelationResponse()'>Cancel</button>`;
+				
+
+				
+			}
+function confirmationResponse(clicked_id){
+	cancelationResponse();
+	
+	var xhttp = new XMLHttpRequest();
 					
 					reservation = clicked_id;
 					 
@@ -123,52 +132,9 @@ function LaundryResponse(clicked_id){
 					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					xhttp.send('reservation='+reservation);
 					
-				console.log('SQL Response has been triggered');
-			}
+				console.log('SQL Response has been triggered');	
+}
+function cancelationResponse(){
+	document.getElementById('confirm').innerHTML = '';
+}
 
-function selectedSlot() {
-var table = document.getElementById("planner"), rIndex, cIndex;
-            // table rows
-            for(var i = 1; i < table.rows.length; i++)
-            {
-                // row cells
-                for(var j = 0; j < table.rows[i].cells.length; j++)
-                {
-                    table.rows[i].cells[j].onclick = function()
-                    {
-                        rIndex = this.parentElement.rowIndex;
-                        cIndex = this.cellIndex-1;
-
-                        timeslots = [
-                        	["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY","SUNDAY"],
-                        	["12:00-02:00AM","02:00-04:00AM","04:00-06:00AM",
-                        		"06:00-08:00AM","08:00-10:00AM","10:00-12:00PM",
-                        		"12:00-02:00PM","02:00-04:00PM","04:00-06:00PM",
-                        		"06:00-08:00PM","08:00-10:00PM","10:00-12:00AM"],
-                        	["Monday", "Tuesday", "Wednesday", "Thursday","Friday","Saturday","Sunday"],
-                        	["0-2am","2-4am","4-6am","6-8am","8-10am","10-12pm","12-2pm","2-4pm","4-6pm",
-                        		"6-8pm","8-10pm","10pm-12am"]
-                        ];
-                   
-                        for (n=0; n < 12; n++) {
-                        	for (k=0; k < 8; k++) {
-                        		if (rIndex == n && cIndex == k) {
-
-                        			console.log(`day: ${timeslots[0][k]} timeslot: ${timeslots[1][n]}`);
-
-                        			document.getElementById('selected-slot').innerHTML = "<p class='day'>" + `${timeslots[0][k]}` + "</p>" + 
-                        			"<p class='timeslot'>" + `${timeslots[1][n+1]}` + "</p>";
-                        			var timeslot = `${timeslots[2][k]} ${timeslots[3][n-1]}`;
-                        			document.getElementById("confirm").innerHTML=`<form onsubmit="${LaundryResponse(timeslot)};">`+
-															'<input type="submit" value="confirm"></form>';
-									console.log(timeslot);
-                        			// document.getElementById('confirm').innerHTML = `<button onclick="LaundryResponse(${timeslot});"></button>`;
-                        		}
-                        	}
-                        }
-                    };
-                }
-            }
-
-
-};
