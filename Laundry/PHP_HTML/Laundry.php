@@ -10,14 +10,18 @@
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 	<title>Document</title>
 </head>
-<body>
 
-	
-	<div class="topnav">
-	  <a class="active" href="#login">Login</a>
-	  <a href="#signup">Sign Up</a>
-	  <a href="#faq">F.A.Q</a>
-	</div>
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: Login.html');
+	exit;
+}
+?>
+
+<body>
 	
 
 	<div class="title">
@@ -191,6 +195,7 @@
 					
 					<div id='confirm'></div>
 					<div id='message'></div>
+					<a href="Logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 					</div>
 			
 					
@@ -207,4 +212,3 @@
 	
 </body>
 </html>
-
