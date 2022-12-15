@@ -85,29 +85,13 @@ function getDateTime() {
 				document.getElementById("clock").innerHTML = currentTime;
 			}, 1000);
 			
-			/*
-			setInterval(function(){
+		
 
-
-					var xhttp = new XMLHttpRequest();
-					xhttp.onreadystatechange = function(){
-					if(this.readyState == 4  && this.status == 200){
-					document.getElementById('message').innerHTML = this.responseText;}
-					};
-
-					xhttp.open("GET", "PrintReservations.php", true);
-					xhttp.send();
-					
-					
-					
-				console.log('SQL Update has been triggered')
-
-				
-			}, 1000);
-			*/
+			
 
 function LaundryResponse(clicked_id){
 				let confirmation = document.getElementById('confirm');
+				document.getElementById('message').innerHTML = '';
 				let value = JSON.stringify(clicked_id);
 				document.getElementById('confirm').innerHTML = `<br><h3>Confirm Reservation:</h3> ${clicked_id}<br>`;
 					 
@@ -117,6 +101,7 @@ confirmation.innerHTML = confirmation.innerHTML + `<button onClick="confirmation
 				
 			}
 function confirmationResponse(clicked_id){
+	
 	cancelationResponse();
 	
 	var xhttp = new XMLHttpRequest();

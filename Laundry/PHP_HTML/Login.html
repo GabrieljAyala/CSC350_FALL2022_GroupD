@@ -9,15 +9,13 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
+	
 		<div class="center">
+
 			<h1>THE HEIGHTS</h1>
 			<h4>LOGIN</h4>
 			<form method="post" action="Login.php">
-				<div class="txt_field">
-					<input type="text" name="unit" required>
-					<span></span>
-					<label>Unit Number</label>
-				</div>
+				<div style='color:white;' id="dropDWN"></div>
 				<div class="txt_field">
 					<input type="password" name="password" required>
 					<span></span>
@@ -28,6 +26,24 @@
                 <p class="no-member">Not a member?</p>
                 <div class="signup_link"><a href="SignUp.html">Sign up</a></div>
 			</form>
+			
+			<script>
+
+
+					//script is for the dropdown box			
+
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function(){
+					if(this.readyState == 4  && this.status == 200){
+					console.log('Returned True')
+					document.getElementById('dropDWN').innerHTML = this.responseText;}
+					};
+
+					xhttp.open("GET", "dropdownLogin.php", true);
+					xhttp.send();
+					
+
+					</script>
 		</div>
 	</body>
 </html>

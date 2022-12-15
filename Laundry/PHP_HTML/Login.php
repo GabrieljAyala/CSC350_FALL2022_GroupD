@@ -1,48 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>The Heights Login</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+	
+		<div class="center">
 
-<?php
-session_start();
-
-$unitID = $_POST["unit"];
-$password = $_POST["password"];
-$conn =  mysqli_connect('localhost',"root",'root','laundry');
-
-
-if ( mysqli_connect_errno() ) {
-	// If there is an error with the connection, stop the script and display the error.
-	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
-} else {
-	$sql="SELECT User_ID, Password FROM login WHERE User_ID = ?";
-	$stmt = mysqli_prepare($conn, $sql);
-	mysqli_stmt_bind_param($stmt, 'i', $unitID);
-	mysqli_stmt_execute($stmt);
-
-	$stmt->store_result();
-
-	if ($stmt->num_rows > 0) {
-	$stmt->bind_result($unitID, $password);
-	$stmt->fetch();
-	// Account exists, now we verify the password.
-	// Note: remember to use password_hash in your registration file to store the hashed passwords.
-	if ($_POST['password'] === $password) {
-		// Verification success! User has logged-in!
-		// Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
-		// $name = "'SELECT * FROM login WHERE '"
-		session_regenerate_id();
-		$_SESSION['loggedin'] = TRUE;
-		// $_SESSION['name'] = $_POST[''];
-		$_SESSION['id'] = $UnitID;
-		// echo 'Welcome ' . $_SESSION['id'] . '!';
-		header('Location: Laundry.php');
-	} else {
-		// Incorrect password
-		echo 'Incorrect password!';
-	}
-	} else {
-	// Incorrect username
-	echo 'Incorrect username';
-	}
-}
+			<h1>THE HEIGHTS</h1>
+			<h4>LOGIN</h4>
+			
+			<!--Change action from login.php to loginLogic.php-->
+			<form method="post" action="LoginLogic.php">
+				<div style='color:white;' id="dropDWN"></div>
+				<div class="txt_field">
+					<input type="password" name="password" required>
+					<span></span>
+					<label>Password</label>
+				</div>
+                <div class="pass">Forgot Password?</div>
+                <input type="submit" value="Login">
+                <p class="no-member">Not a member?</p>
+                <div class="signup_link"><a href="SignUp.php">Sign up</a></div>
+			</form>
+			
+			<script>
 
 
 
-?>
+					//This script is for the dropdown box			
+
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function(){
+					if(this.readyState == 4  && this.status == 200){
+					console.log('Returned True')
+					document.getElementById('dropDWN').innerHTML = this.responseText;}
+					};
+
+					xhttp.open("GET", "dropdownLogin.php", true);
+					xhttp.send();
+					
+					//If the user is logged in and tried to goto the login page it would 
+					//transfer them back to the laundry.php since they are already logged in
+					function phpTrigger(){
+
+					<?php 
+					session_start();
+					if (isset($_SESSION['loggedin'])) {
+					
+					header('Location: Laundry.php');
+						
+					}else{
+						
+					}
+					?>						
+					}
+					phpTrigger();
+
+					</script>
+		</div>
+	</body>
+</html>

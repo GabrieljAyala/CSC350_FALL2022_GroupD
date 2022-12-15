@@ -16,22 +16,21 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: Login.html');
+	header('Location: Login.php');
 	exit;
 }
 ?>
 
 <body>
-	
-
+	<!--This style is very important, this id is ajax'd every second to restrict all the inputs that has been selected by other users-->
+	<style id='test'></style>
 	<div class="title">
 		<div>THE HEIGHTS</div>
 		<div class="subtitle">LAUNDRY PLANNER</div>
 	</div>
 		
-
 		<table class="table-1">
-		
+
 				<td class="planner">
 					<table class="schedule" id="planner">
 							<tr>
@@ -178,12 +177,54 @@ if (!isset($_SESSION['loggedin'])) {
 							</tr>
 							
 							
-					
-						
+						<!--Should activate the doms after a load-->
+
 					</table>
 				</td>
+		
+		 
 			<script src="Laundry.js"></script>
-				<td class="confirm">
+			
+			<script>
+			//Disables the inputs of reservations
+			//Prevents the user from reserving other peoples dates and selecting their own
+			
+			let x;
+			let updater = document.getElementById('domUpdater');
+			function Restriction(){
+
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function(){
+					if(this.readyState == 4  && this.status == 200){
+					x = this.responseText;
+					document.getElementById('test').innerHTML = x;
+					console.log(x);
+					}
+					};
+					
+					xhttp.open("GET", "PrintReservations.php", true);
+					xhttp.send();
+				
+					var p = new XMLHttpRequest();
+					p.onreadystatechange = function(){
+					if(this.readyState == 4  && this.status == 200){
+					x = this.responseText;
+					document.getElementById('reservationMessage').innerHTML = x;
+					console.log(x);
+					}
+					};
+					
+					p.open("GET", "userReservation.php", true);
+					p.send();
+			}
+			//Disables the inputs immediately 
+			Restriction();
+			//Disables every second afterwards in case another user reserves a slot
+			setInterval(function(){Restriction();}, 2000);
+			
+			</script>
+			
+		<td class="confirm">
 					<div id='clock'></div>
 
 					
@@ -195,7 +236,10 @@ if (!isset($_SESSION['loggedin'])) {
 					
 					<div id='confirm'></div>
 					<div id='message'></div>
-					<a href="Logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+					<div id='reservationMessage'></div>
+					
+					
+					<a href="Logout.php"><i style='color:white;' class="fas fa-sign-out-alt"></i><h2>Logout<h2></a>
 					</div>
 			
 					
@@ -205,6 +249,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 	</form>
 	
+
 	
 	
 
