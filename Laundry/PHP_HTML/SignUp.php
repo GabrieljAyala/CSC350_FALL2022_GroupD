@@ -68,7 +68,7 @@
 					xhttp.onreadystatechange = function(){
 					if(this.readyState == 4  && this.status == 200){
 					console.log('Returned True')
-					document.getElementById('bingchilling').innerHTML = this.responseText;}
+					document.getElementById('units').innerHTML = this.responseText;}
 					};
 
 					xhttp.open("GET", "Units.php", true);
@@ -114,7 +114,7 @@
                 </div>
 
               
-				<div id='bingchilling'></div>
+				<div id='units'></div>
 
 
                 <p class="para-2">Already have an account? <a href="Login.php">Login Here</a></p>
