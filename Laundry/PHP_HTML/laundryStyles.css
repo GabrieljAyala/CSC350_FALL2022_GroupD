@@ -54,7 +54,7 @@ body {
 .table-1 {
 	margin: auto;
 	margin-top: 0.01%;
-  	width: 70%;
+  	width: 10%;
 /*  	height: 20%;*/
   	border: 2.5px solid white;
   	border-radius: 10px;
@@ -83,7 +83,7 @@ body {
 	flex-direction: column;
 	position: relative;
 	width: 120px;
-	height: 800px;
+	height: 700px;
 	justify-content: center;
 
   	background-color: rgba(14, 102, 140, 0.73);
@@ -188,7 +188,7 @@ input[type="submit"], input[type="reset"], .timeslot-cell {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-width:100%;
+width:100px;
 height:55px;
    background-color: transparent;
 }
