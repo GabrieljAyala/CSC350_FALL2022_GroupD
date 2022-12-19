@@ -1,0 +1,195 @@
+html { 
+  background: linear-gradient(rgba(0, 0, 0, 0.4), 
+    rgba(0, 0, 0, 0.4)), 
+    url(the-heights.jpg) 
+    no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
+
+.signup-box{
+	width: 360px;
+	height: 660px;
+	margin: auto;
+	border-radius: 3px;
+	position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+}
+
+.signup-box form{
+  padding: 0 20px;
+  box-sizing: border-box;
+  border: 1.5px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  border-spacing: 30px;
+  background-color: rgba(14, 102, 140, 0.73);
+}
+
+.form-elements {
+	margin-top: 12px;
+}
+
+h1{
+	text-align: center;
+	padding-top: 15px;
+	color: white;
+	margin-top: -20px;
+}
+
+h4{
+	text-align: center;
+}
+
+form input{
+width: 100%;
+padding: 7px;
+border: none;
+border-radius: 6px;
+outline: none;
+color: white;
+}
+input[type="submit"]{
+  width: 100%;
+  height: 40px;
+  border: 1px solid;
+  background: #2691d9;
+  border-radius: 100px;
+  font-size: 18px;
+  color: #e9f4fb;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  margin-top: 20px;
+}
+input[type="submit"]:hover{
+  border-color: #2691d9;
+  transition: .5s;
+}
+p{
+	text-align: center;
+	padding-top: 20px;
+	font-size: 15px;
+}
+.signup-container {
+	width: 80%;
+}
+
+.para-2{
+	text-align: center;
+	color: white;
+	font-size: 15px;
+	margin-top: 0px
+}
+.para-2 a{
+	color: #2691d9;
+  margin-top: 10px;
+  text-decoration: underline;
+}
+
+form .txt_field{
+  position: relative;
+  border-bottom: 2px solid #65819a; 
+  margin: 30px 0;
+  margin-top: -5px;
+}
+.txt_field input{
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+.txt_field label{
+  position: absolute;
+  top: 30%;
+  left: 5px;
+  color: white;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+}
+.txt_field span::before{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #2691d9;
+  transition: .5s;
+}
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label{
+  top: 0px;
+  color: #2691d9;
+}
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before{
+  width: 100%;
+}
+
+.apt-unit {
+	color: white;
+}
+
+.select-unit {
+	color: white;
+}
+
+.select-button {
+	border: 1.5px solid white;
+	border-radius: 3px;
+	background-color: rgba(14, 102, 140, 0.1);
+}
+
+#message {
+	text-align: left;
+	margin-left: 3px;
+}
+.confirm #message {
+	display: inline-block;
+}
+.popup {
+	visibility: hidden;
+ 	margin-left: 65.35%;
+	margin-top: 30.8%;
+  transform: translate3d(0, -50%, 0);
+  background: none;
+  border-radius: 5px;
+  width: 250px;
+  height: 50px;
+}
+
+.popup:after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  transform: rotate(-45deg);
+  background: #fff;
+  position: absolute;
+  z-index: -1;
+  bottom: -30px;
+  left: calc(0.9% - 10px);
+}
+
+.inner {
+  padding: 5px 0;
+  padding-bottom: 15px;
+  background: #fff;
+  border-radius: 100px;
+}
