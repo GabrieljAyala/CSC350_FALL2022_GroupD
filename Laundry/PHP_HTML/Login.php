@@ -52,7 +52,7 @@
 					<span></span>
 					<label>Password</label>
 				</div>
-                <div class="pass">Forgot Password?</div>
+                
                 <input type="submit" value="Login">
                 <p class="no-member">Not a member?</p>
                 <div class="signup_link"><a href="SignUp.php">Sign up</a></div>
