@@ -33,9 +33,11 @@
                 document.getElementById('confirm_password').value) {
                 document.getElementById('message').style.color = 'green';
                 document.getElementById('message').innerHTML = '<span>&#10003;</span>';
+                document.getElementById("submit").disabled = false;
                 } else {
                 document.getElementById('message').style.color = 'red';
                 document.getElementById('message').innerHTML = '<span>&#9888;</span>';
+                document.getElementById("submit").disabled = true;
               }
             } else {
                 document.getElementById('message').innerHTML = '';
