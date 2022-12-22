@@ -15,7 +15,6 @@ body {
 }
 
 .topnav {
-/*	margin-top: 0%;*/
   overflow: hidden;
   background-color: #333;
   text-align: left;
@@ -55,7 +54,6 @@ body {
 	margin: auto;
 	margin-top: 0.01%;
   	width: 0%;
-/*  	height: 20%;*/
   	border: 2.5px solid white;
   	border-radius: 10px;
   	padding: 5px;
@@ -89,44 +87,10 @@ body {
   	background-color: rgba(14, 102, 140, 0.73);
 }
 
-/*.schedule, td {
-	color: white;
-	border: 1px solid;
-	border-radius: 10px;
-	border-collapse: collapse;
-}
 
-td {
-	padding: 5px;
-}*/
-
-
-
-/*table {
-    border-collapse:separate;
-    border:solid white 1px;
-    border-radius:6px;
-    color: white;
-}
-
-td, th {
-    border-left:solid white 1px;
-    border-top:solid white 1px;
-}
-
-th {
-    background-color: blue;
-    border-top: none;
-}
-
-td:first-child, th:first-child {
-     border-left: none;
-}*/
 
 
 table.schedule {
-	/*margin-top: 20px;
-	margin-left: 45px;*/
 	margin: auto;
   	width: 50%;
   border: 1.2px solid white;
@@ -169,17 +133,8 @@ table.schedule td:last-child {
 	width: 4vw;
 }
 
-/*.timeslot-cell {
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-}*/
 
 input[type="submit"], input[type="reset"], .timeslot-cell {
-/*	background: none;*/
 	font-size: 0;
 	line-height: 0;
 	color: transparent;
@@ -198,7 +153,6 @@ height:55px;
 	border: none;
 	padding: 0;
 	font: inherit;
-/*	cursor: pointer;*/
 	outline: inherit;
 }
 
@@ -209,11 +163,3 @@ height:55px;
 .timeslot-cell:focus {
 	background-color: #003A54;
 }
-
-/*.day {
-	font-size: 1.5vw;
-}
-
-.timeslot {
-	font-size: 1vw;
-}*/
