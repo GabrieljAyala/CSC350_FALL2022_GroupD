@@ -19,7 +19,7 @@ $result = $conn->query($sql);
 					//This appends all the data into one array
 					}
 					 echo '</select></div>';
-                echo '<input type="submit" value="Sign up" onmouseover="showAgreement();">';
+                echo '<input type="submit" value="Sign up" id="submit" onmouseover="showAgreement();">';
 				}else{
 					echo "<p style='text-align:center'>All the units have been selected! Contact the Laundry Admin if you don't have an account.</p>";
 				}
